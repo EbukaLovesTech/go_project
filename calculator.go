@@ -15,7 +15,7 @@ func main() {
 	calculatorRunning := true
 	scanner := bufio.NewScanner(os.Stdin)
 	for calculatorRunning {
-		fmt.Print("Enter digit to calculate: ")
+		fmt.Print("Enter digits to calculate: e.g 10 + 3:\n")
 		scanner.Scan()
 		text := scanner.Text()
 		digit := find_digit(text)
@@ -46,7 +46,7 @@ func find_digit(digits string) []string {
 
 	digitMatched := re.FindAllString(digits, -1)
 
-	fmt.Println(digitMatched)
+	// fmt.Println(digitMatched)
 	return digitMatched
 }
 
@@ -54,7 +54,7 @@ func find_operator(operators string) []string {
 	re := regexp.MustCompile(`[+\-*/]`)
 
 	operatorMatched := re.FindAllString(operators, -1)
-	fmt.Println(operatorMatched)
+	// fmt.Println(operatorMatched)
 
 	return operatorMatched
 }
@@ -89,6 +89,7 @@ func calculator(digits []string, operator []string) int {
 	return output
 }
 
+
 func convert_to_num(digits []string) []int {
 	nums := make([]int, 0, len(digits))
 
@@ -101,6 +102,5 @@ func convert_to_num(digits []string) []int {
 		nums = append(nums, n)
 	}
 
-	fmt.Println(nums)
 	return nums
 }
